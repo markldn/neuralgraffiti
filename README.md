@@ -1,4 +1,5 @@
 ![Grupo 4](https://github.com/user-attachments/assets/088a8ed3-7636-44af-a69d-5fe6d2e140fe)
+![2Web 1920 – 9](https://github.com/user-attachments/assets/90b3639e-abbd-49a7-8a16-ddeaa71d8f21)
 
 <i>Neuroplasticity for any pre-trained LLM in real time.</i>
 
@@ -11,7 +12,6 @@ Dense neural networks are still very curous and misterious black boxes. New tech
 <b>Neural Graffiting</b> is an experimental technique that modulate the way a pre-trained model behave by injecting memory, opinions and other information directly into the vector embeddings, altering the generative token predictions. This influences not only the output but the entire line of "thinking" of the model - <i>changing how it relates words and concepts on its mind over time</i>.
 
 # How does it work
-![2Web 1920 – 9](https://github.com/user-attachments/assets/90b3639e-abbd-49a7-8a16-ddeaa71d8f21)
 
 Inspired by the neuroplastic nature of living brains, this layer injects or "sprays" a memory trace directly into the final stages of a transformer model inference with no finetuning or retraining required - it works in real time.
 
