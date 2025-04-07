@@ -6,6 +6,8 @@
 ### See the demo in action in [Colab](https://colab.research.google.com/drive/1EeJ-8nzKIOdHaK8jhMdB0jgwnTsSfN-8?usp=sharing). 
 Make sure to grabe a Hugging Face token to download the model.
 
+### Medium article [here](https://babycmd.medium.com/neural-graffiti-a-neuroplasticity-drop-in-layer-for-transformers-models-cf1e2e7d4ad0).
+
 # Neural Graffiti
 This is an experimental layer that merges ideas from liquid neural networks with static transformer models, using a simple but powerful "plug-in": the Spray Layer.
 Inspired by graffiti art of tagging and the neuroplastic nature of living brains, this layer injects a memory trace directly into the final stages of transformer inference — no finetuning, no retraining. It is minimal, modular, and compatible with any model that exposes hidden states.
