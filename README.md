@@ -3,7 +3,7 @@
 - Memory will be saved to a file
 - Optimized for macbooks / cpu
 - Runs as openai API
-- Few tweaks here and there
+- Experimental options to tag each sentence for classification
 
 Run requirements.txt first. Add hf token in the script
 
