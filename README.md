@@ -1,7 +1,7 @@
 2 files added:
 - Converted to python
 - Memory will be saved to a file
-- Optimized for macbooks / cpu
+- Optimized for Apple Metal / CPU
 - Runs as openai API
 - Experimental options to tag each sentence for classification
 
