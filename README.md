@@ -5,8 +5,7 @@
 - Runs as openai API
 - Few tweaks here and there
 
-Run requirements.txt first
-Add hf token in the script
+Run requirements.txt first. Add hf token in the script
 
   
 ![Grupo 4](https://github.com/user-attachments/assets/088a8ed3-7636-44af-a69d-5fe6d2e140fe)
