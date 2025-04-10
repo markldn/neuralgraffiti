@@ -3,6 +3,9 @@
 
 <i>Neuroplasticity for any pre-trained LLM in real time.</i>
 
+Converted the jupiter script into a plain python script, it will save its memory to a file, optimized for mac mps and runs as openai api
+
+
 ### See the demo in action in [Colab](https://colab.research.google.com/drive/1EeJ-8nzKIOdHaK8jhMdB0jgwnTsSfN-8?usp=sharing). 
 Make sure to grabe a Hugging Face token to download the model.
 
