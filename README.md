@@ -1,9 +1,11 @@
+Converted the jupiter script into a plain python script, it will save its memory to a file, optimized for mac mps and runs as openai api
+
 ![Grupo 4](https://github.com/user-attachments/assets/088a8ed3-7636-44af-a69d-5fe6d2e140fe)
 ![2Web 1920 – 9](https://github.com/user-attachments/assets/90b3639e-abbd-49a7-8a16-ddeaa71d8f21)
 
 <i>Neuroplasticity for any pre-trained LLM in real time.</i>
 
-Converted the jupiter script into a plain python script, it will save its memory to a file, optimized for mac mps and runs as openai api
+
 
 
 ### See the demo in action in [Colab](https://colab.research.google.com/drive/1EeJ-8nzKIOdHaK8jhMdB0jgwnTsSfN-8?usp=sharing). 
