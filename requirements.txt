@@ -1,0 +1,21 @@
+# requirements.txt for go.py
+# Core dependencies for the neural model, API, and memory system
+
+# PyTorch and related libraries
+torch>=2.0.0  # Core library for tensor operations and neural networks
+transformers>=4.38.0  # Hugging Face library for model and tokenizer
+accelerate>=0.28.0  # For efficient model loading and device management
+
+# FastAPI and server dependencies
+fastapi>=0.109.0  # Web framework for the API
+uvicorn>=0.29.0  # ASGI server to run FastAPI
+pydantic>=2.6.0  # Data validation and settings management
+
+# Standard Python libraries (included in Python, but listed for clarity)
+# No need to install these separately
+# pickle (for memory serialization)
+# os (for file operations)
+# time (for timestamps)
+# json (for API responses)
+# logging (for debug/info logging)
+# re (for regex in tag extraction)
