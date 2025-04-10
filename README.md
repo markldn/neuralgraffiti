@@ -1,4 +1,4 @@
-Converted the jupiter script into a plain python script, it will save its memory to a file, optimized for mac mps and runs as openai api
+Converted the jupiter script into a plain python script, it will save its memory to a file, optimized for mac and runs as openai api
 
 ![Grupo 4](https://github.com/user-attachments/assets/088a8ed3-7636-44af-a69d-5fe6d2e140fe)
 ![2Web 1920 – 9](https://github.com/user-attachments/assets/90b3639e-abbd-49a7-8a16-ddeaa71d8f21)
