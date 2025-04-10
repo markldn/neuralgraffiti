@@ -1,8 +1,3 @@
-# go.py
-# Neural Graffiti Layer Injected into Gemma with OpenAI-compatible API
-# Enhanced to mimic human brain with selective memory, forgetting, associative recall, adaptation, and learning
-# Updated with dynamic tag generation for memory storage and recall
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -137,46 +132,62 @@ def save_memory_bank(filename=MEMORY_FILE):
         logger.error(f"Error saving memory bank: {e}")
 
 def extract_topic(sentence):
-    sentence = sentence.strip().lower()
+    sentence_lower = sentence.strip().lower()
     
-    # Helper function to extract key noun or verb
-    def get_key_term(text):
-        stopwords = {"is", "am", "are", "was", "were", "the", "a", "an", "in", "to", "and"}
-        words = [w for w in text.split() if w not in stopwords]
+    # Helper function to extract key term or proper noun
+    def get_key_term(text_lower, text_original):
+        stopwords = {"is", "am", "are", "was", "were", "the", "a", "an", "in", "to", "and", "do", "you"}
+        words = text_lower.split()
+        original_words = text_original.strip().split()  # Preserve original capitalization
         
-        # Look for possessive "my" pattern
-        my_match = re.match(r"my (\w+(?:\s+\w+)?)", text)
-        if my_match:
-            return f"my_{my_match.group(1)}"
+        # Check for proper nouns (capitalized words)
+        proper_nouns = []
+        for i, word in enumerate(original_words):
+            if word[0].isupper() and word.lower() not in stopwords:
+                # Check for multi-word proper nouns
+                if i > 0 and original_words[i-1][0].isupper():
+                    proper_nouns[-1] = f"{proper_nouns[-1]}_{word.lower()}"
+                else:
+                    proper_nouns.append(word.lower())
+        if proper_nouns:
+            return "_".join(proper_nouns[:2])  # Limit to two words
         
-        # Look for verbs or nouns after "I"
-        i_match = re.match(r"i (\w+)", text)
-        if i_match:
-            verb_or_noun = i_match.group(1)
-            return verb_or_noun
-        
-        # Default to first significant word
-        return words[0] if words else "unknown"
+        # Fallback to significant non-stopword
+        for word in words:
+            if word not in stopwords:
+                return word
+        return "misc"
     
-    # Handle questions (for recall context)
-    if "what" in sentence or "where" in sentence or "who" in sentence:
-        question_match = re.search(r"what(?:'s| is) my (\w+(?:\s+\w+)?)", sentence)
+    # Handle questions
+    if any(q in sentence_lower for q in ["what", "where", "who", "do"]):
+        question_match = re.search(r"(?:what|where|who|do)(?:'s| is)? my (\w+(?:\s+\w+)?)", sentence_lower)
         if question_match:
             return f"my_{question_match.group(1)}"
-        return get_key_term(sentence)
+        # Extract key term for "do you know X" pattern
+        know_match = re.search(r"do you know ([\w\s]+?)(?:\?|$)", sentence_lower)
+        if know_match:
+            key_phrase = know_match.group(1).strip()
+            # Check for proper nouns in the phrase
+            phrase_start_idx = sentence_lower.index("do you know") + len("do you know ")
+            original_phrase = sentence.strip()[phrase_start_idx:]
+            original_words = original_phrase.split()
+            proper_nouns = [w.lower() for w in original_words if w[0].isupper()]
+            if proper_nouns:
+                return "_".join(proper_nouns[:2])  # e.g., "david_potter"
+            return key_phrase.split()[-1] if key_phrase else "misc"
     
     # Generate tag from key term
-    tag = get_key_term(sentence)
+    tag = get_key_term(sentence_lower, sentence)
     
-    # Refine tag with additional context if applicable
-    if "like" in sentence or "enjoy" in sentence:
+    # Refine tag with context if applicable
+    if "like" in sentence_lower or "enjoy" in sentence_lower:
         tag = f"pref_{tag}"
-    elif "live" in sentence or "from" in sentence:
+    elif "live" in sentence_lower or "from" in sentence_lower:
         tag = f"loc_{tag}"
-    elif "feel" in sentence:
+    elif "feel" in sentence_lower:
         tag = f"emo_{tag}"
     
-    return tag if tag != "unknown" else "misc"
+    return tag if tag != "misc" or not tag else "misc"
 
 def store_memory(embedding, text):
     sentences = [s.strip() for s in text.split('.') if s.strip()]
@@ -403,5 +414,5 @@ async def options_models():
 
 if __name__ == "__main__":
     load_memory_bank()
-    print("Starting OpenAI-compatible API server...")
+    print("Starting OpenAI-compatible API server")
     uvicorn.run(app, host="0.0.0.0", port=5000)
