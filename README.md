@@ -1,5 +1,14 @@
-Converted the jupiter script into a plain python script, it will save its memory to a file, optimized for mac and runs as openai api. Add hf token in script and run the requiremets
+Following changes:
+- Converted to python
+- Memory will be saved to a file
+- Optimized for macbooks / cpu
+- Runs as openai API
+- Few tweaks here and there
 
+Run requirements.txt first
+Add hf token in the script
+
+  
 ![Grupo 4](https://github.com/user-attachments/assets/088a8ed3-7636-44af-a69d-5fe6d2e140fe)
 ![2Web 1920 – 9](https://github.com/user-attachments/assets/90b3639e-abbd-49a7-8a16-ddeaa71d8f21)
 
